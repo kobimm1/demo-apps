@@ -9,9 +9,9 @@ metadata:
 spec:
   project: dev
   source:
-    repoURL: https://github.com/kobimm1/demo-argo.git
+    repoURL: https://github.com/kobimm1/demo-apps.git
     targetRevision: HEAD
-    path: helm/guestbook-service
+    path: helm/guestbook
     helm:
       releaseName: guestBook
       valueFiles:
