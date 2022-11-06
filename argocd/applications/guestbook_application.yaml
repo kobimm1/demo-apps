@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guest
+  namespace: argocd
+  annotations:
+    # resolves to the 'guestbook' directory
+    argocd.argoproj.io/manifest-generate-paths:  /guestbook-service/guestbook
+spec:
+  project: dev
+  source:
+    repoURL: https://github.com/kobimm1/demo-argo.git
+    targetRevision: HEAD
+    path: helm/guestbook-service
+    helm:
+      releaseName: guestBook
+      valueFiles:
+        - values.yaml
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: guestBooks
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
