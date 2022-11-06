@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/kobimm1/demo-apps.git
     targetRevision: HEAD
-    path: helm/guestbook
+    path: helm/helm-guestbook
     helm:
       releaseName: guestbook
       valueFiles:
