@@ -3,9 +3,6 @@ kind: Application
 metadata:
   name: guest
   namespace: argocd
-  annotations:
-    # resolves to the 'guestbook' directory
-    argocd.argoproj.io/manifest-generate-paths:  /guestbook-service/guestbook
 spec:
   project: dev
   source:
@@ -13,12 +10,12 @@ spec:
     targetRevision: HEAD
     path: helm/guestbook
     helm:
-      releaseName: guestBook
+      releaseName: guestbook
       valueFiles:
         - values.yaml
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: guestBooks
+    namespace: guestbook
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

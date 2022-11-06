@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ template "aaa.fullname" . }}
+  name: {{ template "guestbook.fullname" . }}
   labels:
-    app: {{ template "aaa.name" . }}
-    chart: {{ template "aaa.chart" . }}
+    app: {{ template "guestbook.name" . }}
+    chart: {{ template "guestbook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
@@ -12,12 +12,12 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: {{ template "aaa.name" . }}
+      app: {{ template "guestbook.name" . }}
       release: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ template "aaa.name" . }}
+        app: {{ template "guestbook.name" . }}
         release: {{ .Release.Name }}
     spec:
       containers:
