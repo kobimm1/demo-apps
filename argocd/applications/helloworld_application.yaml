@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-demo-app-2
+  name: helloworld
   namespace: argocd
   annotations:
     # resolves to the 'guestbook' directory
     argocd.argoproj.io/manifest-generate-paths: .
 spec:
-  project: default
+  project: dev
   source:
     repoURL: https://github.com/kobimm1/demo-apps.git
     targetRevision: HEAD
-    path: helm/my-demo-app
+    path: helm/helloworld
     helm:
       releaseName: my-app-2
       valueFiles:
